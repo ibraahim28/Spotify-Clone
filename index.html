@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="utility.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Main Container -->
+    <div class="container flex">
+      <!-- Left Section -->
+      <div class="left rounded">
+        <div class="home-box bg-grey rounded">
+          <div class="logo">
+            <img class="invert" src="/SVG/logo.svg" alt="" />
+          </div>
+          <ul>
+            <li class="flex">
+              <img src="/SVG/home.svg" class="invert" alt="Home" />Home
+            </li>
+            <li class="flex">
+              <img src="/SVG/search.svg" class="invert" alt="Search" />Search
+            </li>
+          </ul>
+        </div>
+        <div class="library bg-grey">
+          <div class="heading flex items-center">
+            <img class="invert" src="/SVG/Library.svg" alt="Library" />
+            <h2>Your Library</h2>
+          </div>
+          <div class="songList"></div>
+        </div>
+      </div>
+      <!-- Right Section -->
+      <div class="right bg-grey">
+        <!-- Header/Top -->
+        <div class="header flex justify-between items-center">
+          <div class="arrows flex justify-center">
+            <div class="svg">
+              <img
+                class="invert arr-left"
+                src="/SVG/left-arrow.svg"
+                alt="Left"
+              />
+            </div>
+            <div class="svg">
+              <img
+                class="invert arr-right"
+                src="/SVG/right-arrow.svg"
+                alt="Right"
+              />
+            </div>
+          </div>
+          <div class="buttons">
+            <button id="signUp">Sign Up</button>
+            <button id="login">Login</button>
+          </div>
+        </div>
+
+        <!-- Playlist Section -->
+
+        <div class="playlist rounded">
+          <h1>Spotify Playlists!!!</h1>
+          <div class="card-container">
+            <div class="card">
+              <div class="play">
+                <img src="/SVG/play.svg" alt="Play" />
+              </div>
+              <img
+                src="/IMG/ab67616100005174c40600e02356cc86f0debe84.jpg"
+                alt=""
+              />
+
+              <h2>Happy Beats</h2>
+
+              <p>Cover Songs for you</p>
+            </div>
+            <div class="card">
+              <div class="play">
+                <img src="/SVG/play.svg" alt="Play" />
+              </div>
+              <img
+                src="/IMG/ab67616d00001e023bf0683f6ac36cc954339d03.jpg"
+                alt=""
+              />
+
+              <h2>Sad Beats</h2>
+
+              <p>Cover Songs for you</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="spotify.js"></script>
+  </body>
+</html>
