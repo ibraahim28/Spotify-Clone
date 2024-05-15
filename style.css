@@ -66,6 +66,17 @@ body{
 .heading h2{
     font-size: 16px;
 }
+
+                                    /* Song Cards / Song List */
+
+.songList ul{
+    padding: 16px;
+}
+.songList ul li{
+    padding: 8px 0;
+    list-style-type: decimal;
+    font-size: 10px;
+}
                                     /* Right Section */
 
                                     /* Header/Top Section */
