@@ -70,12 +70,33 @@ body{
                                     /* Song Cards / Song List */
 
 .songList ul{
-    padding: 16px;
+    height: 440px;
 }
 .songList ul li{
-    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    margin: 10px 0;
     list-style-type: decimal;
-    font-size: 10px;
+    font-size: 9px;
+    border: 1px solid rgba(241, 220, 127, 0.795);
+    border-radius: 5px;
+}
+.songList ul li .info{
+    width: 150px;
+}
+.info div{
+    margin-top: 4px;
+}
+                                /* Footer Section */
+
+.footer span{
+    font-size: 8px;
+    font-weight: 300;
+    margin: 0 4px;
+    color: rgb(184, 179, 157);
+    text-decoration: underline;
 }
                                     /* Right Section */
 
@@ -183,4 +204,18 @@ body{
     width: 75%;
     height: auto;
     fill: #000000;
+}
+
+                                        /* PlayBar */
+
+.playBar{
+    padding: 10px;
+    width: 72%;
+    position: fixed;
+    bottom: 40px;
+    background-color: rgb(65, 189, 72);
+}
+
+.playBar .buttons{
+    gap: 10px;
 }
