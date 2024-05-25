@@ -9,6 +9,7 @@ body{
 }
 
 .right{
+    position: relative;
     margin: 10px 0px;
     width: 75vw;
     border-radius: 3px;
@@ -209,13 +210,70 @@ body{
                                         /* PlayBar */
 
 .playBar{
-    padding: 10px;
-    width: 72%;
+    padding: 12px;
+    width: 72vw;
     position: fixed;
     bottom: 40px;
     background-color: rgb(65, 189, 72);
+    border-radius: 10px;
 }
 
+.above-bar{
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 .playBar .buttons{
     gap: 10px;
+    margin-left: 90px;
+}
+
+.playBar .buttons img{
+    width: 35px;
+    cursor: pointer;
+}
+
+.above-bar .time-vol .song-time{
+    font-size: 14px;
+}
+
+.above-bar .time-vol{
+    gap: .6rem;
+}
+
+.above-bar .time-vol img{
+    width: 35px;
+    cursor: pointer;
+}
+
+.above-bar .range input[type = range]{
+    width: 100px;
+    height: 6px;
+    cursor: pointer;
+}
+
+.seek-bar{
+    width: 90%;
+    height: 4px;
+    position: absolute;
+    bottom: 8px;
+    cursor: pointer;
+    background: #fff;
+}
+
+.seek-bar .circle{
+    width: 13px;
+    height: 13px;
+    border-radius:13px ;
+    background-color: #000000;
+    position: relative;
+    bottom: 6px;
+    left: 0;
+    cursor: pointer;
+    transition: left 1s ease-in;
+}
+
+.circle:active{
+    scale: 1.1;
 }

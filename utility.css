@@ -44,3 +44,7 @@ body{
 .rounded{
     border-radius: 8px;
 }
+
+.gap-1{
+    gap: 1rem;
+}
