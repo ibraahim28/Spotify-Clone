@@ -83,6 +83,7 @@ body{
     font-size: 9px;
     border: 1px solid rgba(241, 220, 127, 0.795);
     border-radius: 5px;
+    cursor: pointer;
 }
 .songList ul li .info{
     width: 150px;

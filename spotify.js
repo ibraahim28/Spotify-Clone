@@ -1,4 +1,8 @@
 let currentSong = new Audio();
+let prevbtn = document.getElementById("prev");
+let playbtn = document.getElementById("play");
+let nextbtn = document.getElementById("next");
+let mutebtn = document.getElementById("mute");
 async function getSongs() {
   let a = await fetch("http://127.0.0.1:5500/songs/");
   let response = await a.text();
@@ -19,8 +23,7 @@ async function getSongs() {
 
 async function main() {
   let songs = await getSongs();
-  console.log(songs);
-
+  playMusic(songs[0], true)
   let songUL = document
     .querySelector(".songList")
     .getElementsByTagName("ul")[0];
@@ -40,13 +43,40 @@ async function main() {
     })
   })
 
+  //Attach an event listener to play/pause btn 
+
+  playbtn.addEventListener("click", () => {
+    if (currentSong.paused) {
+      currentSong.play();
+      playbtn.src = "/SVG/pause.svg"
+    } else {
+      currentSong.pause();
+      playbtn.src = "/SVG/play.svg"
+    }
+  })
+
+  //Attach an event listener to mute btn
+
+  mutebtn.addEventListener("click", () => {
+    if (currentSong.muted) {
+      currentSong.muted = false
+      mutebtn.src = "/SVG/Volume-on.svg"
+    }else{
+      currentSong.muted = true;
+      mutebtn.src = "/SVG/volume-off.svg"
+    }
+  })
+
   return songs
+
 }
 
-const playMusic = (track) => {
+const playMusic = (track, pause = false) => {
   currentSong.src = "/songs/" + track;
-  currentSong.play();
-  console.log(track);
+  if (!pause) {
+    currentSong.play();
+    playbtn.src = "/SVG/pause.svg"
+  }
 }
 
 main();
