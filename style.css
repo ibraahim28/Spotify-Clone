@@ -225,6 +225,11 @@ body{
     display: flex;
     justify-content: space-between;
 }
+
+.song-info{
+    width: 25%;
+    font-size: 15px;
+}
 .playBar .buttons{
     gap: 10px;
     margin-left: 90px;
@@ -272,7 +277,7 @@ body{
     bottom: 6px;
     left: 0;
     cursor: pointer;
-    transition: left 1s ease-in;
+    transition: left 0.5 ease-out;
 }
 
 .circle:active{
