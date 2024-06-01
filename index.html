@@ -12,8 +12,13 @@
     <!-- Main Container -->
     <div class="container flex">
       <!-- Left Section -->
-      <div class="left rounded">
+      <div class="left rounded" style="left: 0px;">
+        <div class="close">
+          <img src="/SVG/close.svg" alt="close" class="invert">
+        </div>
+          
         <div class="home-box bg-grey rounded">
+          
           <div class="logo">
             <img class="invert" src="/SVG/logo.svg" alt="" />
           </div>
@@ -49,6 +54,9 @@
         <!-- Header/Top -->
         <div class="header flex justify-between items-center">
           <div class="arrows flex justify-center">
+            <div class="hamburgerContainer">
+              <img class="invert" src="/SVG/hamburger.svg" alt="Menu">
+            </div>
             <div class="svg">
               <img
                 class="invert arr-left"
@@ -110,18 +118,15 @@
                 
               </div>
               <div class="buttons flex justify-between items-center">
-                <img id="prev" src="/SVG/previous.svg" alt="" />
-                <img id="play" src="/SVG/play.svg" alt="" />
-                <img id="next" src="/SVG/next.svg" alt="" />
+                <img class="invert" id="prev" src="/SVG/previous.svg" alt="" />
+                <img class="invert" id="play" src="/SVG/play.svg" alt="" />
+                <img class="invert" id="next" src="/SVG/next.svg" alt="" />
               </div>
               <div class="time-vol flex justify-center items-center">
-                <div class="song-time">02:00 / 03:00</div>
+                <div class="song-time"></div>
 
-                <div class="volume flex justify-between gap-1 items-center">
-                  <img id="mute" src="/SVG/Volume-on.svg" alt="" />
-                  <div class="range">
-                    <input type="range" name="volume" />
-                  </div>
+                <div class="volume flex justify-between items-center">
+                  <img class="invert" id="mute" src="/SVG/Volume-on.svg" alt="" />
                 </div>
               </div>
             </div>
