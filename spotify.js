@@ -3,17 +3,18 @@ let prevbtn = document.getElementById("prev");
 let playbtn = document.getElementById("play");
 let nextbtn = document.getElementById("next");
 let mutebtn = document.getElementById("mute");
+let songs;
 
 function secondsToMinutesSeconds(seconds) {
   if (isNaN(seconds) || seconds < 0) {
-      return "00:00";
+    return "00:00";
   }
 
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);
 
-  const formattedMinutes = String(minutes).padStart(2, '0');
-  const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+  const formattedMinutes = String(minutes).padStart(2, "0");
+  const formattedSeconds = String(remainingSeconds).padStart(2, "0");
 
   return `${formattedMinutes}:${formattedSeconds}`;
 }
@@ -37,14 +38,15 @@ async function getSongs() {
 }
 
 async function main() {
-  let songs = await getSongs();
-  playMusic(songs[0], true)
+  songs = await getSongs();
+  playMusic(songs[0], true);
   let songUL = document
     .querySelector(".songList")
     .getElementsByTagName("ul")[0];
   for (const song of songs) {
     songUL.innerHTML =
-      songUL.innerHTML + `<li> <img class="invert" src="/SVG/Music.svg" alt="Music">
+      songUL.innerHTML +
+      `<li> <img class="invert" src="/SVG/Music.svg" alt="Music">
                 <div class="info">
                   <div>${song.replaceAll("%20", " ")}</div>
                   <div>Ibra</div>
@@ -52,72 +54,111 @@ async function main() {
                 <img class="invert" src="/SVG/play.svg" alt="Play"> </li>`;
   }
 
-  Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
-    e.addEventListener("click", element => {
-      playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
-    })
-  })
+  Array.from(
+    document.querySelector(".songList").getElementsByTagName("li")
+  ).forEach((e) => {
+    e.addEventListener("click", (element) => {
+      playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim());
+    });
+  });
 
-  //Attach an event listener to play/pause btn 
+  //Attach an event listener to play/pause btn
 
   playbtn.addEventListener("click", () => {
     if (currentSong.paused) {
       currentSong.play();
-      playbtn.src = "/SVG/pause.svg"
+      playbtn.src = "/SVG/pause.svg";
     } else {
       currentSong.pause();
-      playbtn.src = "/SVG/play.svg"
+      playbtn.src = "/SVG/play.svg";
     }
-  })
+  });
 
   //Attach an event listener to mute btn
 
   mutebtn.addEventListener("click", () => {
     if (currentSong.muted) {
-      currentSong.muted = false
-      mutebtn.src = "/SVG/Volume-on.svg"
-    }else{
+      currentSong.muted = false;
+      mutebtn.src = "/SVG/Volume-on.svg";
+    } else {
       currentSong.muted = true;
-      mutebtn.src = "/SVG/volume-off.svg"
+      mutebtn.src = "/SVG/volume-off.svg";
     }
-  })
+  });
 
-  return songs
+  //add an event Listener for prev
+prevbtn.addEventListener("click", ()=>{
+  let index = songs.indexOf(currentSong.src.split("/").slice(4)[0]);
+  if(index > 0){
+    playMusic(songs[(index - 1)])
+  }else{
+    playMusic(songs[songs.length - 1])
+  }
+ })
 
+  //add an event Listener for next
+nextbtn.addEventListener("click", ()=>{
+  let index = songs.indexOf(currentSong.src.split("/").slice(4)[0]);
+  if(index < songs.length - 1){
+    playMusic(songs[(index + 1)])
+  }else{
+    playMusic(songs[0])
+  }
+ })
+ //add an event listener for autoplay 
+ currentSong.addEventListener("ended", ()=>{
+  let songSrc = currentSong.src.split("/").slice(4)[0];
+    let index = songs.indexOf(songSrc);
+
+  if (index < songs.length - 1)  {
+    playMusic(songs[index + 1]);
+  }else {
+    playMusic(songs[0]);
+  }
+ })
+
+  return songs;
+
+  
 }
 
 const playMusic = (track, pause = false) => {
   currentSong.src = "/songs/" + track;
   if (!pause) {
     currentSong.play();
-    playbtn.src = "/SVG/pause.svg"
+    playbtn.src = "/SVG/pause.svg";
   }
 
   document.querySelector(".song-info").innerHTML = decodeURI(track);
-  document.querySelector(".song-time").innerHTML = "00:00 : 00:00"
-}
+  document.querySelector(".song-time").innerHTML = "00:00 : 00:00";
+};
 
 //add functionality to the circle
-currentSong.addEventListener("timeupdate", ()=> {
-  document.querySelector(".song-time").innerHTML = `${secondsToMinutesSeconds(currentSong.currentTime)} : ${secondsToMinutesSeconds(currentSong.duration)}`;
+currentSong.addEventListener("timeupdate", () => {
+  document.querySelector(".song-time").innerHTML = `${secondsToMinutesSeconds(
+    currentSong.currentTime
+  )} : ${secondsToMinutesSeconds(currentSong.duration)}`;
 
-  document.querySelector(".circle").style.left = currentSong.currentTime / currentSong.duration * (100) + "%";
-})
+  document.querySelector(".circle").style.left =
+    (currentSong.currentTime / currentSong.duration) * 100 + "%";
+});
 
 //add an event listener to seekbar
-document.querySelector(".seek-bar").addEventListener("click", e=>{
+document.querySelector(".seek-bar").addEventListener("click", (e) => {
   let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
   document.querySelector(".circle").style.left = percent + "%";
-  currentSong.currentTime = ((currentSong.duration)*percent) / 100;
-})
+  currentSong.currentTime = (currentSong.duration * percent) / 100;
+});
 
 //add an event listener to hamburger
 document.querySelector(".hamburgerContainer").addEventListener("click", () => {
-  document.querySelector(".left").style.left = "0"
-})
+  document.querySelector(".left").style.left = "0";
+});
 
 //add an event listener to close
 document.querySelector(".close").addEventListener("click", () => {
-  document.querySelector(".left").style.left = "-120%"
-})
+  document.querySelector(".left").style.left = "-120%";
+});
+
+
 main();
