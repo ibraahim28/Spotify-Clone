@@ -167,7 +167,7 @@ body {
 .playlist h1 {
   font-size: 24px;
   padding: 16px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .card-container {
@@ -277,6 +277,7 @@ body {
   bottom: 8px;
   cursor: pointer;
   background: #fff;
+  border-radius: 10px;
 }
 
 .seek-bar .circle {
@@ -300,10 +301,10 @@ body {
 @media screen and (max-width: 1000px) {
   .left {
     position: absolute;
-    left: -130%;
+    left: -150%;
     transition: all 0.3s;
     z-index: 1;
-    width: 300px;
+    width: 250px;
     background-color: black;
     padding: 0;
     height: 100vh;
@@ -344,6 +345,10 @@ body {
   }
   .card {
     width: 70vw;
+    text-align: center;
+  }
+  .card2{
+    margin-bottom: 220px;
   }
   .play {
     display: none;
